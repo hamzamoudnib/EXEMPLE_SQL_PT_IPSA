@@ -1,0 +1,206 @@
+--1--------------------------------------------------------------------------
+drop table IF exists public.client;
+CREATE TABLE public.client (
+	ville varchar NULL,
+	prenom varchar NULL,
+	nom varchar NULL,
+	identifiant int4 NULL
+);
+
+
+INSERT INTO public.client (ville, prenom, nom, identifiant)VALUES('Paris', 'Pierre', 'Dupond', 1);
+INSERT INTO public.client (ville, prenom, nom, identifiant)VALUES('Nantes', 'Sabrina ', 'Durand', 2);
+INSERT INTO public.client (ville, prenom, nom, identifiant)VALUES('Lyon', 'Julien', 'Martin', 3);
+INSERT INTO public.client (ville, prenom, nom, identifiant)VALUES('Marseille', 'David', 'Bernard', 4);
+INSERT INTO public.client (ville, prenom, nom, identifiant)VALUES('Grenoble', 'Marie', 'Leroy', 5);
+commit;
+
+
+--2--------------------------------------------------------------------------
+drop table IF exists public.produit;
+CREATE TABLE public.produit (
+id int4 null,
+nom varchar NULL,
+description varchar NULL,
+prix float8 NULL	
+);
+
+INSERT INTO public.produit (id, nom, description, prix)VALUES(1, 'Ecran', 'Ecran de grandes tailles.', 399.99);
+INSERT INTO public.produit (id, nom, description, prix)VALUES(2, 'Clavier', 'Clavier sans fil.', 27);
+INSERT INTO public.produit (id, nom, description, prix)VALUES(3, 'Souris', 'Souris sans fil.', 24);
+INSERT INTO public.produit (id, nom, description, prix)VALUES(4, 'Ordinateur portable', 'Grande autonomie et et sacoche offerte.', 700);
+commit;
+
+
+
+--3--------------------------------------------------------------------------
+drop table IF exists public.produit_categorie;
+CREATE TABLE public.produit_categorie (
+p_fk_category_id int4 null,
+nom varchar NULL
+);
+
+
+INSERT INTO public.produit_categorie (p_fk_category_id, nom)VALUES(1, 'Pc');
+commit;
+
+--4--------------------------------------------------------------------------
+drop table IF exists public.client;
+CREATE TABLE public.client (
+id int4 null,
+nom varchar null,
+nbr_commande varchar null,
+ville varchar null
+);
+
+INSERT INTO public.client (id, nom,nbr_commande ,ville  )VALUES(1,	'Paul'	,3	,'paris');
+INSERT INTO public.client (id, nom,nbr_commande ,ville  )VALUES(2,	'Maurice'	,0	,'rennes');
+INSERT INTO public.client (id, nom,nbr_commande ,ville  )VALUES(3,	'Joséphine'	,1	,'toulouse');
+INSERT INTO public.client (id, nom,nbr_commande ,ville  )VALUES(4,	'Gérard'	,7	,'paris');
+commit;
+
+--5---------------------------------------------------------
+drop table IF exists public.produit;
+CREATE TABLE public.produit (
+id int4 null,
+nom varchar null,
+categorie varchar null,
+stock int4 null,
+prix int4 null
+);
+
+INSERT INTO public.produit (id,nom, categorie,stock ,prix  )VALUES(1,	'ordinateur'	,'informatique'	,5,	950);
+INSERT INTO public.produit (id,nom, categorie,stock ,prix  )VALUES(2,	'clavier'	,'informatique'	,32	, 35);
+INSERT INTO public.produit (id,nom, categorie,stock ,prix  )VALUES(3,	'souris'	,'informatique'	,16	,30);
+INSERT INTO public.produit (id,nom, categorie,stock ,prix  )VALUES(4,	'crayon'	,'fourniture'	,147,2);
+commit;
+
+
+--6-------------------------------------------------------------------
+drop table IF exists public.adresse;
+CREATE TABLE public.adresse (
+id int4 null,
+id_utilisateur int4 null,
+addr_rue varchar null,
+addr_code_postal int4 null,
+addr_ville varchar null
+);
+
+INSERT INTO public.adresse (id,id_utilisateur, addr_rue,addr_code_postal,addr_ville   )VALUES(1,	23,	'35 Rue Madeleine Pelletier',	25250,	'Bournois');
+INSERT INTO public.adresse (id,id_utilisateur, addr_rue,addr_code_postal,addr_ville   )VALUES(2,	43,	'21 Rue du Moulin Collet',	75006,	'Paris');
+INSERT INTO public.adresse (id,id_utilisateur, addr_rue,addr_code_postal,addr_ville   )VALUES(3,	65,	'28 Avenue de Cornouaille',	27220,	'Mousseaux­Neuville');
+INSERT INTO public.adresse (id,id_utilisateur, addr_rue,addr_code_postal,addr_ville   )VALUES(4,	67,	'41 Rue Marcel de la Provoté',	76430,	'Graimbouville');
+INSERT INTO public.adresse (id,id_utilisateur, addr_rue,addr_code_postal,addr_ville   )VALUES(5,	68,	'18 Avenue de Navarre',	75009,	'Paris');
+commit;
+
+
+
+--7-------------------------------------------------------------
+drop table IF exists public.utilisateur;
+CREATE TABLE public.utilisateur (
+id int4 null,
+nom varchar null,
+date_inscription date null
+);
+
+INSERT INTO public.utilisateur (id,nom, date_inscription   )VALUES(1,	'Maurice',	'2012/03/02');
+INSERT INTO public.utilisateur (id,nom, date_inscription   )VALUES(2,	'Simon',	'2012/03/05');
+INSERT INTO public.utilisateur (id,nom, date_inscription   )VALUES(3,	'Chloé',	'2012/04/14');
+INSERT INTO public.utilisateur (id,nom, date_inscription   )VALUES(4,	'Marie',	'2012/04/15');
+INSERT INTO public.utilisateur (id,nom, date_inscription   )VALUES(5,	'Clémentine',	'2012/04/26');
+commit;
+
+
+--8-------------------------------------------
+drop table IF exists public.client;
+CREATE TABLE public.client (
+id int4 null,
+nom varchar null,
+ville varchar null
+);
+
+INSERT INTO public.client (id,nom, ville   )VALUES(1,	'Léon',	'Lyon');
+INSERT INTO public.client (id,nom, ville   )VALUES(2,	'Odette',	'Nice');
+INSERT INTO public.client (id,nom, ville   )VALUES(3,	'Vivien',	'Nantes');
+INSERT INTO public.client (id,nom, ville   )VALUES(4,	'Etienne',	'Lille');
+commit;
+
+
+
+
+--9---------------------------------------------------------------
+drop table IF exists public.utilisateurs;
+CREATE TABLE public.utilisateurs (
+id int4 null,
+nom varchar null,
+date_inscription date null,
+fk_adresse_livraison_id int4 null,
+fk_adresse_facturation_id int4 null
+);
+
+INSERT INTO public.utilisateurs (id,nom, date_inscription , fk_adresse_livraison_id , fk_adresse_facturation_id   )VALUES(23,	'Grégoire',	'2013/02/12',	12	,12);
+INSERT INTO public.utilisateurs (id,nom, date_inscription , fk_adresse_livraison_id , fk_adresse_facturation_id    )VALUES(24,	'Sarah',	'2013/02/17',	NULL	,NULL);
+INSERT INTO public.utilisateurs (id,nom, date_inscription , fk_adresse_livraison_id , fk_adresse_facturation_id    )VALUES(25,	'Anne'	,'2013/02/21',	13,	14);
+INSERT INTO public.utilisateurs (id,nom, date_inscription , fk_adresse_livraison_id , fk_adresse_facturation_id    )VALUES(26,	'Frédérique',	'2013/03/02',	null,	NULL);
+commit;
+
+
+--10---------------------------------------------------------------
+drop table IF exists public.achat;
+CREATE TABLE public.achat (
+id int4 null,
+client varchar null,
+tarif int8 null,
+date date null
+);
+
+INSERT INTO public.achat (id,	client,	tarif,	date   )VALUES(1,	'Pierre',	102	,'2012/10/23');
+INSERT INTO public.achat (id,	client,	tarif,	date   )VALUES(2,	'Simon',	47,	'2012/10/27');
+INSERT INTO public.achat (id,	client,	tarif,	date   )VALUES(3,	'Marie',	18	,'2012/11/05');
+INSERT INTO public.achat (id,	client,	tarif,	date   )VALUES(4,	'Marie'	,20,	'2012/11/14');
+INSERT INTO public.achat (id,	client,	tarif,	date   )VALUES(5,	'Pierre',	160	,'2012/12/03');
+commit;
+
+
+
+--11---------------------------------------------------------------
+drop table IF exists public.utilisateur2;
+CREATE TABLE public.utilisateur2 (
+id int4 null,
+nom varchar null,
+prenom varchar null,
+date_inscription date null,
+tarif_total int4 null
+);
+
+INSERT INTO public.utilisateur2 (id,nom,prenom, date_inscription , tarif_total  )VALUES(1,	'Durand',	'Maurice',	'2012/02/05',	145);
+INSERT INTO public.utilisateur2 (id,nom,prenom, date_inscription , tarif_total  )VALUES(2,	'Dupond',	'Fabrice',	'2012/02/07',	65);
+INSERT INTO public.utilisateur2 (id,nom,prenom, date_inscription , tarif_total  )VALUES(3,	'Durand',	'Fabienne',	'2012/02/13',	90);
+INSERT INTO public.utilisateur2 (id,nom,prenom, date_inscription , tarif_total  )VALUES(4,	'Dubois',	'Chloé',	'2012/02/16',	98);
+INSERT INTO public.utilisateur2 (id,nom,prenom, date_inscription , tarif_total  )VALUES(5,	'Dubois',	'Simon',	'2012/02/23',	27);
+commit;
+
+
+--12---------------------------------------------------------------
+drop table IF exists public.achats;
+CREATE TABLE public.achats (
+id int4 null,
+nom varchar null,
+surcharge float8 null,
+prix_unitaire int4 null,
+quantite int4 null
+);
+
+INSERT INTO public.achats (id,	nom,	surcharge,	prix_unitaire,	quantite  )VALUES(1,	'Produit A', 1.3,	6,	3);
+INSERT INTO public.achats (id,	nom,	surcharge,	prix_unitaire,	quantite  )VALUES(2,	'Produit B',	1.5,	8,	2);
+INSERT INTO public.achats (id,	nom,	surcharge,	prix_unitaire,	quantite  )VALUES(3,	'Produit C',	0.75,	7,	4);
+INSERT INTO public.achats (id,	nom,	surcharge,	prix_unitaire,	quantite  )VALUES(4,	'Produit D',	1,	15,	2);
+commit;
+
+
+
+
+
+
+
+
